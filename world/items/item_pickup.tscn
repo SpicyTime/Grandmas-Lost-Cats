@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://bk17e24xgh0ve"]
+
+[ext_resource type="Script" uid="uid://bk7lpt6iprmd1" path="res://world/items/item_pickup.gd" id="1_o0oia"]
+[ext_resource type="PackedScene" uid="uid://bih4u8iltnmp8" path="res://components/interact_component.tscn" id="2_h0f7n"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lhikn"]
+
+[node name="ItemPickup" type="Node2D"]
+script = ExtResource("1_o0oia")
+
+[node name="ItemSprite" type="Sprite2D" parent="."]
+
+[node name="InteractComponent" parent="." instance=ExtResource("2_h0f7n")]
+
+[node name="InteractCollider" type="CollisionShape2D" parent="InteractComponent"]
+shape = SubResource("CircleShape2D_lhikn")
