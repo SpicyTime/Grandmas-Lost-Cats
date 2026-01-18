@@ -1,16 +1,27 @@
-[gd_scene load_steps=4 format=3 uid="uid://bk17e24xgh0ve"]
+[gd_scene load_steps=5 format=3 uid="uid://bk17e24xgh0ve"]
 
 [ext_resource type="Script" uid="uid://bk7lpt6iprmd1" path="res://world/items/item_pickup.gd" id="1_o0oia"]
 [ext_resource type="PackedScene" uid="uid://bih4u8iltnmp8" path="res://components/interact_component.tscn" id="2_h0f7n"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_h0f7n"]
+radius = 8.0
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_lhikn"]
 
-[node name="ItemPickup" type="Node2D"]
+[node name="ItemPickup" type="RigidBody2D"]
+collision_layer = 2
+collision_mask = 2
+gravity_scale = 1.421
 script = ExtResource("1_o0oia")
 
-[node name="ItemSprite" type="Sprite2D" parent="."]
+[node name="ItemCollider" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_h0f7n")
 
-[node name="InteractComponent" parent="." instance=ExtResource("2_h0f7n")]
+[node name="ItemSprite" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+
+[node name="InteractComponent" parent="." node_paths=PackedStringArray("interactable_node") instance=ExtResource("2_h0f7n")]
+interactable_node = NodePath("..")
 
 [node name="InteractCollider" type="CollisionShape2D" parent="InteractComponent"]
 shape = SubResource("CircleShape2D_lhikn")

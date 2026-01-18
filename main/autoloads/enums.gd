@@ -6,3 +6,7 @@ enum OverlayType {
 enum MenuType {
 	NONE,
 }
+
+enum ItemType {
+	KEY
+}

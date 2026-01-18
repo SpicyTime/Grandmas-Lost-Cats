@@ -15,7 +15,6 @@ func handle_interact() -> void:
 func _on_body_entered(body: Node2D) -> void:
 	if not body is CharacterBody2D:
 		return
-	
 	add_to_group(Constants.INTERACTABLES_GROUP_NAME)
 
 

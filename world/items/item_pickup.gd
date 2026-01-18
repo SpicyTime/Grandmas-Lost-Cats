@@ -1,14 +1,17 @@
-extends Node2D
-@export var item_strategy: ItemStrategy = null
+class_name ItemPickup
+extends RigidBody2D
+@export var item_data: ItemData = null
+@export var is_floating: bool = false
+@onready var item_sprite: Sprite2D = $ItemSprite
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	item_sprite.texture = item_data.item_texture
+	freeze = is_floating
 
 
 func handle_interact() -> void:
 	# TO DO: 
 	# 1. Play sound
 	# 2. Play effects
-	SignalManager.pickup_item.emit(item_strategy)
+	SignalManager.pickup_item.emit(item_data)
 	queue_free()

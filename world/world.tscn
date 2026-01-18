@@ -1,6 +1,31 @@
-[gd_scene load_steps=2 format=3 uid="uid://gw1p4125gike"]
+[gd_scene load_steps=6 format=3 uid="uid://gw1p4125gike"]
 
-[ext_resource type="Script" uid="uid://br408vmq4thhq" path="res://world/world.gd" id="1_6xmxd"]
+[ext_resource type="Script" uid="uid://qqdwm2tbqm56" path="res://world/world.gd" id="1_6xmxd"]
+[ext_resource type="PackedScene" uid="uid://don1qh1umbtjo" path="res://world/player/player.tscn" id="2_tcf2h"]
+[ext_resource type="PackedScene" uid="uid://bk17e24xgh0ve" path="res://world/items/item_pickup.tscn" id="3_4717r"]
+[ext_resource type="Resource" uid="uid://4noryxinwkhq" path="res://world/items/item datas/key_item_data.tres" id="4_h5o24"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_tcf2h"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_6xmxd")
+
+[node name="Camera" type="Camera2D" parent="."]
+
+[node name="Floor" type="StaticBody2D" parent="."]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+position = Vector2(0, 85)
+shape = SubResource("WorldBoundaryShape2D_tcf2h")
+
+[node name="Player" parent="." instance=ExtResource("2_tcf2h")]
+
+[node name="KeyPickup" parent="." instance=ExtResource("3_4717r")]
+position = Vector2(-85, 10)
+item_data = ExtResource("4_h5o24")
+
+[node name="KeyPickup2" parent="." instance=ExtResource("3_4717r")]
+position = Vector2(84, 20)
+item_data = ExtResource("4_h5o24")
