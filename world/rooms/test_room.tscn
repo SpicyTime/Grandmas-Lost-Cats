@@ -13,7 +13,7 @@ size = Vector2(396, 20)
 room_length = 396.0
 
 [node name="ItemPickup" parent="Items" index="0" instance=ExtResource("2_mc2tj")]
-position = Vector2(-21, -28)
+position = Vector2(0, -28)
 item_data = ExtResource("3_cylyh")
 
 [node name="RoomTransitionArea" parent="TransitionAreas" index="0" instance=ExtResource("2_o1a4q")]

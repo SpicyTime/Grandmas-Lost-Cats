@@ -3,6 +3,7 @@ extends Node2D
 @export var room_length: float = 320
 @export var camera_limit_offsets: Vector2 = Vector2.ZERO
 const PLAYER_SCENE_PATH: String = "res://world/player/player.tscn"
+@onready var item_container: Node2D = $Items
 
 func handle_player_exited() -> void:
 	visible = false

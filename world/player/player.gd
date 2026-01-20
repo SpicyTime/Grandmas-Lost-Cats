@@ -8,20 +8,28 @@ const TURN_DAMP: float = 0.7
 var input_direction_x_axis: float = 0
 var facing_direction: float = 1
 var held_item: ItemData = null
+var pickup_delay: float = 0.05
+var can_pickup_item: bool = true
 @onready var player_collider: CollisionShape2D = $PlayerCollider
 @onready var player_sprite: Sprite2D = $PlayerSprite
 @onready var held_item_sprite: Sprite2D = $HeldItemSprite
 @onready var player_camera: Camera2D = $PlayerCamera
+@onready var pickup_delay_timer: Timer = $PickupDelayTimer
 
 
 func _ready() -> void:
-	SignalManager.pickup_item.connect(func(item_data: ItemData) -> void:
+	SignalManager.pickup_item.connect(func(item_data: ItemData, item_pickup: ItemPickup) -> void:
+		if not can_pickup_item:
+			return
+		can_pickup_item = false
+		pickup_delay_timer.start(pickup_delay)
 		# We swap items if we are already holding one
 		# This makes it so that players don't always need to drop the current one
 		if held_item != null:
 			_drop_item()
 		held_item = item_data
 		held_item_sprite.texture = held_item.item_texture
+		item_pickup.queue_free()
 	)
 
 
@@ -82,5 +90,10 @@ func set_held_item(new_data: ItemData) -> void:
 
 func _drop_item() -> void:
 	SignalManager.dropped_item.emit(held_item, held_item_sprite.global_position)
+	print(held_item_sprite.global_position)
 	held_item = null
 	held_item_sprite.texture = null
+
+
+func _on_pickup_delay_timer_timeout() -> void:
+	can_pickup_item = true
