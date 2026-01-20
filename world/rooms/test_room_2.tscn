@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://bl6ksdv423x8i"]
+
+[ext_resource type="PackedScene" uid="uid://c12cupakumcsm" path="res://world/rooms/room.tscn" id="1_6erpu"]
+[ext_resource type="PackedScene" uid="uid://druuljal6a4ja" path="res://world/rooms/room_transition_area.tscn" id="2_67som"]
+[ext_resource type="PackedScene" uid="uid://loota8b5lx5q" path="res://world/rooms/spawn_marker.tscn" id="3_h7hsf"]
+
+[node name="TestRoom2" instance=ExtResource("1_6erpu")]
+
+[node name="RoomTransitionArea" parent="TransitionAreas" index="0" instance=ExtResource("2_67som")]
+position = Vector2(142, -59)
+area_id = 1
+
+[node name="SpawnMarker" parent="SpawnMarkers" index="0" instance=ExtResource("3_h7hsf")]
+position = Vector2(100, -36)
+
+[node name="FloorSprite" parent="Floor" index="0"]
+position = Vector2(0, 6)
+scale = Vector2(10, 1)

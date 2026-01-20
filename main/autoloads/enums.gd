@@ -10,3 +10,8 @@ enum MenuType {
 enum ItemType {
 	KEY
 }
+
+enum RoomType {
+	TEST1,
+	TEST2
+}

@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://druuljal6a4ja"]
+
+[ext_resource type="Script" uid="uid://f42j0l66jhmg" path="res://world/rooms/room_transition_area.gd" id="1_fi7v8"]
+[ext_resource type="Texture2D" uid="uid://fcmwxkf730l7" path="res://icon.svg" id="2_suiey"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bx188"]
+size = Vector2(8, 86)
+
+[node name="RoomTransitionArea" type="Area2D"]
+script = ExtResource("1_fi7v8")
+
+[node name="DetectorCollider" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_bx188")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0.5137255)
+scale = Vector2(0.25, 2.625)
+texture = ExtResource("2_suiey")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
