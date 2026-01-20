@@ -1,5 +1,5 @@
+class_name Player
 extends CharacterBody2D
-
 
 @export var MAX_SPEED: float = 85.0
 const FRICTION: float =  300.0
@@ -10,6 +10,7 @@ var held_item: ItemData = null
 @onready var player_collider: CollisionShape2D = $PlayerCollider
 @onready var player_sprite: Sprite2D = $PlayerSprite
 @onready var held_item_sprite: Sprite2D = $HeldItemSprite
+@onready var player_camera: Camera2D = $PlayerCamera
 
 
 func _ready() -> void:
@@ -21,6 +22,7 @@ func _ready() -> void:
 		held_item = item_data
 		held_item_sprite.texture = held_item.item_texture
 	)
+	player_camera.offset.x = player_camera.LOOKAHEAD_OFFSET
 
 
 func _physics_process(delta: float) -> void:
@@ -36,9 +38,10 @@ func _physics_process(delta: float) -> void:
 	if prev_input_direction_x_axis != 0 and input_direction_x_axis != 0:
 		if input_direction_x_axis < 0:
 			held_item_sprite.position.x = -abs(held_item_sprite.position.x)
+			player_camera.swap_lookahead(Vector2.LEFT.x)
 		else:
 			held_item_sprite.position.x = abs(held_item_sprite.position.x)
-	
+			player_camera.swap_lookahead(Vector2.RIGHT.x)
 	
 	if prev_input_direction_x_axis != input_direction_x_axis:
 		velocity.x *= TURN_DAMP
