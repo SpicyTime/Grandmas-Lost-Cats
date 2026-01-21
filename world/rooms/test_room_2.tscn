@@ -7,12 +7,14 @@
 [node name="TestRoom2" instance=ExtResource("1_6erpu")]
 
 [node name="RoomTransitionArea" parent="TransitionAreas" index="0" instance=ExtResource("2_67som")]
-position = Vector2(142, -59)
+position = Vector2(162, -59)
 area_id = 1
 
 [node name="SpawnMarker" parent="SpawnMarkers" index="0" instance=ExtResource("3_h7hsf")]
-position = Vector2(100, -36)
+position = Vector2(137, -41)
 
 [node name="FloorSprite" parent="Floor" index="0"]
-position = Vector2(0, 6)
 scale = Vector2(10, 1)
+
+[node name="FloorCollider" parent="Floor" index="1"]
+position = Vector2(0, -6)

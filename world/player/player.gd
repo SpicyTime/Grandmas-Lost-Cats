@@ -18,6 +18,7 @@ var can_pickup_item: bool = true
 
 
 func _ready() -> void:
+	owner =  get_parent()
 	SignalManager.pickup_item.connect(func(item_data: ItemData, item_pickup: ItemPickup) -> void:
 		if not can_pickup_item:
 			return
@@ -73,12 +74,17 @@ func get_data() -> Array:
 	var data: Array =[]
 	data.append(held_item)
 	data.append(input_direction_x_axis)
+	data.append(velocity)
 	return data
 
 
 func set_up_player(player_data: Array) -> void:
-	set_held_item(player_data[0])
-	facing_direction = player_data[1]
+	if not player_data.is_empty():
+		set_held_item(player_data[0])
+		facing_direction = player_data[1]
+		velocity = player_data[2]
+	else:
+		facing_direction = 1
 	held_item_sprite.position.x = facing_direction * abs(held_item_sprite.position.x)
 
 
@@ -90,7 +96,6 @@ func set_held_item(new_data: ItemData) -> void:
 
 func _drop_item() -> void:
 	SignalManager.dropped_item.emit(held_item, held_item_sprite.global_position)
-	print(held_item_sprite.global_position)
 	held_item = null
 	held_item_sprite.texture = null
 

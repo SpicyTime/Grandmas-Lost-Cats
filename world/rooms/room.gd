@@ -7,6 +7,9 @@ const PLAYER_SCENE_PATH: String = "res://world/player/player.tscn"
 
 func handle_player_exited() -> void:
 	visible = false
+	var player: Player = find_child("Player")
+	if player:
+		player.queue_free()
 
 
 func handle_player_entered() -> void:
@@ -19,9 +22,11 @@ func spawn_player(player_data: Array, from_transition_area_id: int) -> void:
 	call_deferred("add_child", player_scene)
 	await player_scene.ready
 	player_scene.player_camera.limit_left = position.x + int(-room_length / 2)
-	player_scene.player_camera.limit_right = position.x + int(room_length / 2)
+	player_scene.player_camera.limit_right =  position.x + int(room_length / 2)
 	player_scene.set_up_player(player_data)
 	for spawn_marker in $SpawnMarkers.get_children():
 		if spawn_marker.connecting_id == from_transition_area_id:
 			player_scene.position = spawn_marker.position
 	
+func get_camera_bounds() -> Vector2:
+	return Vector2(position.x + int(-room_length / 2), position.x + int(room_length / 2))

@@ -17,17 +17,20 @@ position = Vector2(0, -28)
 item_data = ExtResource("3_cylyh")
 
 [node name="RoomTransitionArea" parent="TransitionAreas" index="0" instance=ExtResource("2_o1a4q")]
-position = Vector2(-173, -57)
+position = Vector2(-200, -57)
 to_room_type = 1
 
 [node name="SpawnMarker" parent="SpawnMarkers" index="0" instance=ExtResource("3_a560r")]
-position = Vector2(-112, -32)
+position = Vector2(-174, -41)
 connecting_id = 1
 
+[node name="SpawnMarker2" parent="SpawnMarkers" index="1" instance=ExtResource("3_a560r")]
+position = Vector2(99, -41)
+connecting_id = 2
+
 [node name="FloorSprite" parent="Floor" index="0"]
-position = Vector2(0, 8)
 scale = Vector2(12.313, 1)
 
 [node name="FloorCollider" parent="Floor" index="1"]
-position = Vector2(0, 2)
+position = Vector2(0, -6)
 shape = SubResource("RectangleShape2D_mc2tj")
