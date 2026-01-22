@@ -1,16 +1,23 @@
-[gd_scene load_steps=7 format=3 uid="uid://df4exxomvha5p"]
+[gd_scene load_steps=9 format=3 uid="uid://df4exxomvha5p"]
 
-[ext_resource type="PackedScene" uid="uid://c12cupakumcsm" path="res://world/rooms/room.tscn" id="1_0gikp"]
+[ext_resource type="PackedScene" uid="uid://c12cupakumcsm" path="res://world/rooms/base_room.tscn" id="1_0gikp"]
+[ext_resource type="PackedScene" uid="uid://dyaf0tlbme54h" path="res://world/cats/cat.tscn" id="2_cylyh"]
 [ext_resource type="PackedScene" uid="uid://bk17e24xgh0ve" path="res://world/items/item_pickup.tscn" id="2_mc2tj"]
 [ext_resource type="PackedScene" uid="uid://druuljal6a4ja" path="res://world/rooms/room_transition_area.tscn" id="2_o1a4q"]
 [ext_resource type="PackedScene" uid="uid://loota8b5lx5q" path="res://world/rooms/spawn_marker.tscn" id="3_a560r"]
 [ext_resource type="Resource" uid="uid://4noryxinwkhq" path="res://world/items/item datas/key_item_data.tres" id="3_cylyh"]
+[ext_resource type="Texture2D" uid="uid://fcmwxkf730l7" path="res://icon.svg" id="3_ptifh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mc2tj"]
 size = Vector2(396, 20)
 
 [node name="TestRoom" instance=ExtResource("1_0gikp")]
 room_length = 396.0
+
+[node name="Cat" parent="Cats" index="0" instance=ExtResource("2_cylyh")]
+position = Vector2(-59, -25)
+cat_name = "Gipetto"
+texture = ExtResource("3_ptifh")
 
 [node name="ItemPickup" parent="Items" index="0" instance=ExtResource("2_mc2tj")]
 position = Vector2(0, -28)
@@ -20,13 +27,16 @@ item_data = ExtResource("3_cylyh")
 position = Vector2(-200, -57)
 to_room_type = 1
 
+[node name="RoomTransitionArea2" parent="TransitionAreas" index="1" instance=ExtResource("2_o1a4q")]
+position = Vector2(198, -57)
+to_room_type = 2
+
 [node name="SpawnMarker" parent="SpawnMarkers" index="0" instance=ExtResource("3_a560r")]
 position = Vector2(-174, -41)
 connecting_id = 1
 
 [node name="SpawnMarker2" parent="SpawnMarkers" index="1" instance=ExtResource("3_a560r")]
-position = Vector2(99, -41)
-connecting_id = 2
+position = Vector2(171, -41)
 
 [node name="FloorSprite" parent="Floor" index="0"]
 scale = Vector2(12.313, 1)

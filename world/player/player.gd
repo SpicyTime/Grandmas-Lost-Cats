@@ -67,7 +67,7 @@ func _unhandled_input(_event: InputEvent) -> void:
 	elif Input.is_action_just_pressed("interact"):
 		var interact_node = get_tree().get_first_node_in_group(Constants.INTERACTABLES_GROUP_NAME)
 		if interact_node:
-			interact_node.handle_interact()
+			interact_node.handle_interact(self)
 
 
 func get_data() -> Array:
@@ -92,6 +92,8 @@ func set_held_item(new_data: ItemData) -> void:
 	held_item = new_data
 	if held_item:
 		held_item_sprite.texture = held_item.item_texture
+	else:
+		held_item_sprite.texture = null
 
 
 func _drop_item() -> void:

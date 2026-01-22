@@ -15,9 +15,9 @@ func _process(_delta: float) -> void:
 
 
 
-func _on_cat_found(cat_id: int) -> void:
+func _on_cat_found(id: int) -> void:
 	cats_found += 1
-	found_cats[cat_id] = true
+	found_cats[id] = true
 	if cats_found == TOTAL_CAT_COUNT:
 		print("Every Cat Found")
 

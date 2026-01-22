@@ -1,0 +1,32 @@
+[gd_scene load_steps=7 format=3 uid="uid://c10ogynlj6xg5"]
+
+[ext_resource type="PackedScene" uid="uid://c12cupakumcsm" path="res://world/rooms/base_room.tscn" id="1_3yyar"]
+[ext_resource type="Script" uid="uid://d31ucd7ae8i2x" path="res://world/rooms/grandmas_room.gd" id="2_rgjjw"]
+[ext_resource type="PackedScene" uid="uid://druuljal6a4ja" path="res://world/rooms/room_transition_area.tscn" id="2_u62kb"]
+[ext_resource type="PackedScene" uid="uid://djrg0csmd5k74" path="res://world/cats/static_cat_sprite.tscn" id="3_mhmy5"]
+[ext_resource type="PackedScene" uid="uid://loota8b5lx5q" path="res://world/rooms/spawn_marker.tscn" id="3_tqnge"]
+[ext_resource type="Texture2D" uid="uid://fcmwxkf730l7" path="res://icon.svg" id="4_tqnge"]
+
+[node name="GrandmasRoom" instance=ExtResource("1_3yyar")]
+script = ExtResource("2_rgjjw")
+
+[node name="StaticCatSprite" parent="Cats" index="0" instance=ExtResource("3_mhmy5")]
+position = Vector2(-39, -25)
+scale = Vector2(1, 0.5)
+texture = ExtResource("4_tqnge")
+
+[node name="RoomTransitionArea" parent="TransitionAreas" index="0" instance=ExtResource("2_u62kb")]
+position = Vector2(-162, -57)
+
+[node name="SpawnMarker" parent="SpawnMarkers" index="0" instance=ExtResource("3_tqnge")]
+position = Vector2(-131, -41)
+
+[node name="FloorSprite" parent="Floor" index="0"]
+scale = Vector2(10, 1)
+
+[node name="FloorCollider" parent="Floor" index="1"]
+position = Vector2(0, -6)
+
+[node name="GrandmaSprite" type="Sprite2D" parent="." index="7"]
+position = Vector2(13, -35)
+texture = ExtResource("4_tqnge")

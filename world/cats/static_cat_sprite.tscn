@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://djrg0csmd5k74"]
+
+[ext_resource type="Script" uid="uid://cw2n1lw63bcc" path="res://world/cats/static_cat_sprite.gd" id="1_hvv1a"]
+
+[node name="StaticCatSprite" type="Sprite2D"]
+script = ExtResource("1_hvv1a")

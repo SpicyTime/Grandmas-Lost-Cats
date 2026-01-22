@@ -13,5 +13,6 @@ enum ItemType {
 
 enum RoomType {
 	TEST1,
-	TEST2
+	TEST2,
+	GRANDMAS_ROOM
 }

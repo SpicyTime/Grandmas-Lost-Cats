@@ -1,16 +1,20 @@
-[gd_scene load_steps=6 format=3 uid="uid://gw1p4125gike"]
+[gd_scene load_steps=7 format=3 uid="uid://gw1p4125gike"]
 
 [ext_resource type="Script" uid="uid://qqdwm2tbqm56" path="res://world/world.gd" id="1_6xmxd"]
 [ext_resource type="PackedScene" uid="uid://df4exxomvha5p" path="res://world/rooms/test_room.tscn" id="3_4717r"]
 [ext_resource type="PackedScene" uid="uid://bl6ksdv423x8i" path="res://world/rooms/test_room_2.tscn" id="4_h5o24"]
 [ext_resource type="PackedScene" uid="uid://bfts7fiyqvfys" path="res://world/fade_transition.tscn" id="5_fn3g3"]
 [ext_resource type="Script" uid="uid://dbvkvcohe10ll" path="res://world/room_manager.gd" id="5_mmdvd"]
+[ext_resource type="PackedScene" uid="uid://c10ogynlj6xg5" path="res://world/rooms/grandmas_room.tscn" id="6_fn3g3"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_6xmxd")
 
 [node name="RoomManager" type="Node2D" parent="."]
 script = ExtResource("5_mmdvd")
+starting_room_type = 2
+
+[node name="FadeTransition" parent="RoomManager" instance=ExtResource("5_fn3g3")]
 
 [node name="TestRoom" parent="RoomManager" instance=ExtResource("3_4717r")]
 position = Vector2(0, 86)
@@ -18,4 +22,5 @@ position = Vector2(0, 86)
 [node name="TestRoom2" parent="RoomManager" instance=ExtResource("4_h5o24")]
 position = Vector2(-457, 86)
 
-[node name="FadeTransition" parent="RoomManager" instance=ExtResource("5_fn3g3")]
+[node name="GrandmasRoom" parent="RoomManager" instance=ExtResource("6_fn3g3")]
+position = Vector2(401, 86)

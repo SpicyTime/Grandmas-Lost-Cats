@@ -2,16 +2,20 @@ extends Node2D
 @export var starting_room_type: Enums.RoomType = Enums.RoomType.TEST1
 var current_room: Room = null
 var room_lookup_table: Dictionary[Enums.RoomType, Room] = {}
+
 @onready var test_room: Room = $TestRoom
 @onready var test_room_2: Room = $TestRoom2
+@onready var grandmas_room: Room = $GrandmasRoom
+
 @onready var fade_transition: CanvasLayer = $FadeTransition
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	SignalManager.dropped_item.connect(_spawn_item_pickup)
 	SignalManager.swap_room.connect(_on_swap_room_requested)
+	SignalManager.cat_found.connect(_on_cat_found)
 	_set_up_table()
-	handle_room_swap([starting_room_type, 2, []])
+	handle_room_swap([starting_room_type, 0, []])
 
 
 func handle_room_swap(room_data: Array) -> void:
@@ -32,7 +36,8 @@ func handle_room_swap(room_data: Array) -> void:
 func _set_up_table() -> void:
 	room_lookup_table = {
 		Enums.RoomType.TEST1: test_room,
-		Enums.RoomType.TEST2: test_room_2
+		Enums.RoomType.TEST2: test_room_2,
+		Enums.RoomType.GRANDMAS_ROOM: grandmas_room
 	}
 
 
@@ -48,3 +53,7 @@ func _spawn_item_pickup(item_data: ItemData, spawn_position: Vector2) -> void:
 	pickup_instance.item_data = item_data
 	
 	current_room.item_container.add_child(pickup_instance)
+
+
+func _on_cat_found(id: int) -> void:
+	pass

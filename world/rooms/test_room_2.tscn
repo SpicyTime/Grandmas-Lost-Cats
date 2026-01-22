@@ -1,10 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://bl6ksdv423x8i"]
+[gd_scene load_steps=6 format=3 uid="uid://bl6ksdv423x8i"]
 
-[ext_resource type="PackedScene" uid="uid://c12cupakumcsm" path="res://world/rooms/room.tscn" id="1_6erpu"]
+[ext_resource type="PackedScene" uid="uid://c12cupakumcsm" path="res://world/rooms/base_room.tscn" id="1_6erpu"]
 [ext_resource type="PackedScene" uid="uid://druuljal6a4ja" path="res://world/rooms/room_transition_area.tscn" id="2_67som"]
+[ext_resource type="PackedScene" uid="uid://dyaf0tlbme54h" path="res://world/cats/cat.tscn" id="2_h7hsf"]
+[ext_resource type="Texture2D" uid="uid://fcmwxkf730l7" path="res://icon.svg" id="3_864me"]
 [ext_resource type="PackedScene" uid="uid://loota8b5lx5q" path="res://world/rooms/spawn_marker.tscn" id="3_h7hsf"]
 
 [node name="TestRoom2" instance=ExtResource("1_6erpu")]
+
+[node name="Cat" parent="Cats" index="0" instance=ExtResource("2_h7hsf")]
+position = Vector2(-42, -25)
+cat_name = "Ronald"
+description = "He likes to eat metal"
+texture = ExtResource("3_864me")
+id = 1
+required_items = Array[int]([0])
 
 [node name="RoomTransitionArea" parent="TransitionAreas" index="0" instance=ExtResource("2_67som")]
 position = Vector2(162, -59)

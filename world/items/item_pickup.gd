@@ -9,7 +9,7 @@ func _ready() -> void:
 	freeze = is_floating
 
 
-func handle_interact() -> void:
+func handle_interact(_player: Player = null) -> void:
 	# TO DO: 
 	# 1. Play sound
 	# 2. Play effects

@@ -8,8 +8,8 @@ func _ready() -> void:
 		push_error("Interactable Node does not have method 'handle_interact'")
 
 
-func handle_interact() -> void:
-	interactable_node.handle_interact()
+func handle_interact(player: Player = null) -> void:
+	interactable_node.handle_interact(player)
 
 
 func _on_body_entered(body: Node2D) -> void:
