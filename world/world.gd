@@ -9,12 +9,6 @@ func _ready() -> void:
 	SignalManager.register_cat.connect(_register_cat)
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	pass
-
-
-
 func _on_cat_found(id: int) -> void:
 	cats_found += 1
 	found_cats[id] = true

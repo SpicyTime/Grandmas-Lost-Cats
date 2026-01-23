@@ -45,7 +45,6 @@ func _on_swap_room_requested(room_data: Array) -> void:
 	fade_transition.transition(room_data)
 
 
-
 func _spawn_item_pickup(item_data: ItemData, spawn_position: Vector2) -> void:
 	var pickup_instance: ItemPickup = load(Constants.ITEM_PICKUP_PATH).instantiate()
 	
@@ -55,5 +54,5 @@ func _spawn_item_pickup(item_data: ItemData, spawn_position: Vector2) -> void:
 	current_room.item_container.add_child(pickup_instance)
 
 
-func _on_cat_found(id: int) -> void:
+func _on_cat_found(_id: int) -> void:
 	pass

@@ -1,6 +1,6 @@
 extends Node
 enum OverlayType {
-	
+	DIALOGUE_UI
 }
 
 enum MenuType {

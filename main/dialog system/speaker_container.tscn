@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://bann3gxjbypmf"]
+
+[ext_resource type="Texture2D" uid="uid://fcmwxkf730l7" path="res://icon.svg" id="1_w7eu4"]
+
+[node name="SpeakerContainer" type="MarginContainer"]
+size_flags_horizontal = 8
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_right = 5
+
+[node name="SpeakerSprite" type="TextureRect" parent="."]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = ExtResource("1_w7eu4")
+stretch_mode = 2

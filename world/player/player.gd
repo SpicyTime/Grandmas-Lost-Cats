@@ -10,6 +10,7 @@ var facing_direction: float = 1
 var held_item: ItemData = null
 var pickup_delay: float = 0.05
 var can_pickup_item: bool = true
+var is_disabled: bool = false
 @onready var player_collider: CollisionShape2D = $PlayerCollider
 @onready var player_sprite: Sprite2D = $PlayerSprite
 @onready var held_item_sprite: Sprite2D = $HeldItemSprite
@@ -19,6 +20,12 @@ var can_pickup_item: bool = true
 
 func _ready() -> void:
 	owner =  get_parent()
+	SignalManager.dialog_finished.connect(func() -> void:
+		is_disabled = false
+	)
+	SignalManager.disable_player.connect(func() -> void:
+		is_disabled = true
+	)
 	SignalManager.pickup_item.connect(func(item_data: ItemData, item_pickup: ItemPickup) -> void:
 		if not can_pickup_item:
 			return
@@ -35,6 +42,8 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
+	if is_disabled:
+		return
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -62,6 +71,8 @@ func _physics_process(delta: float) -> void:
 
 
 func _unhandled_input(_event: InputEvent) -> void:
+	if is_disabled:
+		return
 	if Input.is_action_just_pressed("drop_item") and held_item:
 		_drop_item()
 	elif Input.is_action_just_pressed("interact"):

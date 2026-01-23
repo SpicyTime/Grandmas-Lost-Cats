@@ -12,8 +12,8 @@ var active_menu_type: Enums.MenuType = Enums.MenuType.NONE
 # Since this is an autoload we need a node to "attach" the ui to
 func set_up_ui(canvas_layer: CanvasLayer) -> void:
 	# Grabs the needed nodes, they should always be in this order
-	var menus: Control = canvas_layer.get_child(0)
-	var overlays: Control = canvas_layer.get_child(1)
+	var menus: Control = canvas_layer.get_child(0).get_child(0)
+	var overlays: Control = canvas_layer.get_child(0).get_child(1)
 	
 	# Sets up the menus
 	for menu in menus.get_children():
@@ -78,9 +78,13 @@ func swap_menu(menu_type: Enums.MenuType) -> void:
 # Gets the enum based off of the string name
 func _menu_type_from_name(menu_name: String) -> Enums.MenuType:
 	#match overlay_name:
-	return Enums.MenuType
+	return Enums.MenuType.NONE
 
 # Gets the enum based off of the string name
 func _overlay_type_from_name(overlay_name: String) -> Enums.OverlayType:
-	#match overlay_name: 
-	return Enums.OverlayType
+	match overlay_name: 
+		_:
+			return Enums.OverlayType.DIALOGUE_UI
+
+func add_dialog_box(dialog_box: DialogBox) -> void:
+	ui_overlays[Enums.OverlayType.DIALOGUE_UI].add_child(dialog_box)
