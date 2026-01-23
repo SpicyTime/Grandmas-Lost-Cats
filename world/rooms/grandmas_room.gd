@@ -10,7 +10,7 @@ func _ready() -> void:
 		static_cat_sprite.visible = false
 		cat_sprite_lookup[static_cat_sprite.id] = static_cat_sprite
 	await get_tree().create_timer(1.0).timeout
-	DialogManager.start_dialog(["Hello?", "How are you doing today?"], Constants.PLAYER_SPEAKER_ID, speaker_texture)
+	DialogManager.start_dialog(["Hello?", "How are you doing today?"], Constants.NO_SPEAKER_ID, speaker_texture)
 
 
 func _turn_on_cat(cat_id: int) -> void:

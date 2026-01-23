@@ -64,8 +64,6 @@ func _display_letter():
 func _align_by_speaker(id: int) -> void:
 	set_offsets_preset(Control.PRESET_CENTER_BOTTOM)
 	set_anchors_preset(Control.PRESET_CENTER_BOTTOM) 
-	if id == Constants.NO_SPEAKER_ID:
-		text_box.add_theme_constant_override("margin_left", 8)
 
 
 func _handle_speaker_id_changed(speaker_id: int) -> void:
